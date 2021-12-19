@@ -37,12 +37,12 @@ class PictureOfTheDayViewModel(
             if(response.isSuccessful&&response.body()!=null){
                 liveDataForViewToObserve.value = PictureOfTheDayState.Success(response.body()!!)
             }else{
-                //TODO("уловить ошибку")
+                liveDataForViewToObserve.value = PictureOfTheDayState.Error(Throwable("Ошибка при получении ответа"))
             }
         }
 
         override fun onFailure(call: Call<PictureOfTheDayResponseData>, t: Throwable) {
-            //TODO("уловить ошибку")
+            liveDataForViewToObserve.value = PictureOfTheDayState.Error(Throwable("Ошибка при запросе $t"))
         }
 
     }

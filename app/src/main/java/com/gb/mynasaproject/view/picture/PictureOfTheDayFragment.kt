@@ -81,7 +81,10 @@ class PictureOfTheDayFragment : Fragment() {
 
     private fun renderData(state: PictureOfTheDayState) {
         when (state) {
-            is PictureOfTheDayState.Error -> {//TODO(ДЗ)
+            is PictureOfTheDayState.Error -> {
+                val throwable = state.error
+                Log.d("mylogs", "$throwable")
+                Toast.makeText(context, "Ошибка загрузки фотографии", Toast.LENGTH_LONG).show()
             }
             is PictureOfTheDayState.Loading -> {
                 binding.imageView.load(R.drawable.ic_no_photo_vector)
@@ -94,9 +97,13 @@ class PictureOfTheDayFragment : Fragment() {
                     error(R.drawable.ic_load_error_vector)
                     placeholder(R.drawable.ic_no_photo_vector)
                 }
+
+                val explanation = pictureOfTheDayResponseData.explanation
+                binding.textView.text = explanation
+
+                }
             }
         }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -134,7 +141,6 @@ class PictureOfTheDayFragment : Fragment() {
         context.setSupportActionBar(binding.bottomAppBar)
         setHasOptionsMenu(true)
 
-
         binding.fab.setOnClickListener {
             if(isMain){
                 isMain = false
@@ -150,9 +156,6 @@ class PictureOfTheDayFragment : Fragment() {
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
             }
         }
-
-
-
 
     }
 
