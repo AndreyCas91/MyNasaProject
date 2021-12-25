@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.Toast
 import com.gb.mynasaproject.R
 import com.gb.mynasaproject.databinding.BottomNavigationLayoutBinding
+import com.gb.mynasaproject.view.theme.ReplacementThemesOnMy
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
@@ -27,8 +28,12 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
 
             when (menuItem.itemId) {
-                R.id.navigation_one -> {
-                    Toast.makeText(context,"1",Toast.LENGTH_SHORT).show()
+                R.id.replacementTheme -> {
+                    requireActivity().supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.container, ReplacementThemesOnMy.newInstance())
+                        .addToBackStack(null)
+                        .commit()
                 }
                 R.id.navigation_two -> {
                     Toast.makeText(context,"2",Toast.LENGTH_SHORT).show()

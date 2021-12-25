@@ -51,20 +51,39 @@ class PictureOfTheDayFragment : Fragment() {
             })
         }
 
-        val behavior = BottomSheetBehavior.from(binding.includeBottomSheet.bottomSheetContainer)
-       /* behavior.state = BottomSheetBehavior.*/
 
+        /* binding.chipGroup.setOnCheckedChangeListener { _, checkedId ->
+             when(checkedId){
+                 R.id.chipToday -> {
+                     // TODO реализовать изменение по нажатию на чип
+                 }
+
+                 R.id.chipYesterday -> {
+                     // TODO реализовать изменение по нажатию на чип
+                 }
+
+                 R.id.chipBeforeYesterday -> {
+                     // TODO реализовать изменение по нажатию на чип
+                 }
+
+                 else -> {
+                     // TODO реализовать изменение по нажатию на чип
+                 }
+             }
+         }*/
+
+        val behavior = BottomSheetBehavior.from(binding.includeBottomSheet.bottomSheetContainer)
 
         behavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
-                   /* BottomSheetBehavior.STATE_DRAGGING -> TODO("not implemented")
-                    BottomSheetBehavior.STATE_COLLAPSED -> TODO("not implemented")
-                    BottomSheetBehavior.STATE_EXPANDED -> TODO("not implemented")
-                    BottomSheetBehavior.STATE_HALF_EXPANDED -> TODO("not implemented")
-                    BottomSheetBehavior.STATE_HIDDEN -> TODO("not implemented")
-                    BottomSheetBehavior.STATE_SETTLING -> TODO("not implemented")*/
+                    /* BottomSheetBehavior.STATE_DRAGGING -> TODO("not implemented")
+                     BottomSheetBehavior.STATE_COLLAPSED -> TODO("not implemented")
+                     BottomSheetBehavior.STATE_EXPANDED -> TODO("not implemented")
+                     BottomSheetBehavior.STATE_HALF_EXPANDED -> TODO("not implemented")
+                     BottomSheetBehavior.STATE_HIDDEN -> TODO("not implemented")
+                     BottomSheetBehavior.STATE_SETTLING -> TODO("not implemented")*/
                 }
             }
 
@@ -101,9 +120,9 @@ class PictureOfTheDayFragment : Fragment() {
                 val explanation = pictureOfTheDayResponseData.explanation
                 binding.textView.text = explanation
 
-                }
             }
         }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -128,9 +147,17 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
-            R.id.app_bar_settings -> requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container,
-            ChipsFragment.newInstance()).commit()
-            android.R.id.home -> BottomNavigationDrawerFragment().show(requireActivity().supportFragmentManager,"")
+            R.id.app_bar_settings -> requireActivity().supportFragmentManager.beginTransaction()
+                .replace(
+                    R.id.container,
+                    ChipsFragment.newInstance()
+                )
+                .addToBackStack(null)
+                .commit()
+            android.R.id.home -> BottomNavigationDrawerFragment().show(
+                requireActivity().supportFragmentManager,
+                ""
+            )
         }
         return super.onOptionsItemSelected(item)
     }
@@ -142,17 +169,28 @@ class PictureOfTheDayFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.fab.setOnClickListener {
-            if(isMain){
+            if (isMain) {
                 isMain = false
-                binding.bottomAppBar.navigationIcon =null
+                binding.bottomAppBar.navigationIcon = null
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_back_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.ic_back_fab
+                    )
+                )
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
-            }else{
+            } else {
                 isMain = true
-                binding.bottomAppBar.navigationIcon =ContextCompat.getDrawable(context,R.drawable.ic_hamburger_menu_bottom_bar)
+                binding.bottomAppBar.navigationIcon =
+                    ContextCompat.getDrawable(context, R.drawable.ic_hamburger_menu_bottom_bar)
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.ic_plus_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.ic_plus_fab
+                    )
+                )
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
             }
         }

@@ -4,11 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/font/akronim.xml" value="0.16041666666666668" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/font/alex_brush.xml" value="0.16041666666666668" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/font/amarante.xml" value="0.264" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/font/architects_daughter.xml" value="0.16041666666666668" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/bottom_navigation_layout.xml" value="0.13020833333333334" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.13020833333333334" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_chips.xml" value="0.15670289855072464" />
-        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_main.xml" value="0.15670289855072464" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_main.xml" value="0.176" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_replacement_themes.xml" value="0.4" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/menu/menu_bottom_bar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/menu/menu_bottom_bar_other_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14635416666666667" />
       </map>
     </option>
   </component>
