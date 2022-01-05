@@ -1,11 +1,13 @@
 package com.gb.mynasaproject.view.picture
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import com.gb.mynasaproject.R
 import com.gb.mynasaproject.databinding.BottomNavigationLayoutBinding
-import com.gb.mynasaproject.view.theme.ReplacementThemesOnMy
+import com.gb.mynasaproject.view.theme.ReplacementThemesOnMyFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
@@ -31,7 +33,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                 R.id.replacementTheme -> {
                     requireActivity().supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.container, ReplacementThemesOnMy.newInstance())
+                        .replace(R.id.container, ReplacementThemesOnMyFragment.newInstance())
                         .addToBackStack(null)
                         .commit()
                 }

@@ -4,46 +4,56 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gb.mynasaproject.BuildConfig
-import com.gb.mynasaproject.repository.PictureOfTheDayResponseData
 import com.gb.mynasaproject.repository.PictureOfTheDayRetrofitImpl
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class PictureOfTheDayViewModel(
-    private val liveDataForViewToObserve: MutableLiveData<PictureOfTheDayState> = MutableLiveData(),
-    private val retrofitImpl: PictureOfTheDayRetrofitImpl = PictureOfTheDayRetrofitImpl()
+    private val liveDataForViewToObserve: MutableLiveData<AppState> = MutableLiveData(),
+    private val retrofitImpl: PictureOfTheDayRetrofitImpl = PictureOfTheDayRetrofitImpl(),
+    private val callback: GeneralCallback = GeneralCallback(liveDataForViewToObserve)
 ) : ViewModel() {
-    fun getData(): LiveData<PictureOfTheDayState> {
+    fun getData(): LiveData<AppState> {
         return liveDataForViewToObserve
     }
 
-    fun sendServerRequest() {
-        liveDataForViewToObserve.value = PictureOfTheDayState.Loading(0)
+    fun sendServerRequest(date : String) {
+        liveDataForViewToObserve.value = AppState.Loading(0)
         val apiKey: String = BuildConfig.NASA_API_KEY
         if (apiKey.isBlank()) {
-            liveDataForViewToObserve.value = PictureOfTheDayState.Error(Throwable("wrong key"))
+            liveDataForViewToObserve.value = AppState.Error(Throwable("wrong key"))
         } else {
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey).enqueue(callback)
+            retrofitImpl.getRetrofitImpl(apiKey, date, callback.callbackDay)
         }
     }
 
-    private val callback = object : Callback<PictureOfTheDayResponseData> {
-        override fun onResponse(
-            call: Call<PictureOfTheDayResponseData>,
-            response: Response<PictureOfTheDayResponseData>
-        ) {
-            if(response.isSuccessful&&response.body()!=null){
-                liveDataForViewToObserve.value = PictureOfTheDayState.Success(response.body()!!)
-            }else{
-                liveDataForViewToObserve.value = PictureOfTheDayState.Error(Throwable("Ошибка при получении ответа"))
-            }
+    fun getMarsPicture() {
+        liveDataForViewToObserve.value = AppState.Loading(0)
+        val earthDate : String = getDayBeforeYesterday(-2)
+        val apiKey = BuildConfig.NASA_API_KEY
+        if (apiKey.isBlank()){
+            liveDataForViewToObserve.value = AppState.Error(Throwable("wrong key"))
+        } else{
+            retrofitImpl.getMarsRetrofitImpl(earthDate, apiKey, callback.marsCallback)
         }
+    }
 
-        override fun onFailure(call: Call<PictureOfTheDayResponseData>, t: Throwable) {
-            liveDataForViewToObserve.value = PictureOfTheDayState.Error(Throwable("Ошибка при запросе $t"))
+    fun getEpic() {
+        liveDataForViewToObserve.value = AppState.Loading(0)
+        val apiKey = BuildConfig.NASA_API_KEY
+        if (apiKey.isBlank()) {
+            liveDataForViewToObserve.value = AppState.Error(Throwable("wrong key"))
+        } else {
+            retrofitImpl.getEPIC(apiKey, callback.epicCallback)
         }
+    }
 
+    private fun getDayBeforeYesterday(count: Int): String {
+        val currentDate = Calendar.getInstance()
+        currentDate.add(Calendar.DAY_OF_MONTH, count)
+        val format1 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        format1.timeZone = TimeZone.getTimeZone("EST")
+        return format1.format(currentDate.time)
     }
 }

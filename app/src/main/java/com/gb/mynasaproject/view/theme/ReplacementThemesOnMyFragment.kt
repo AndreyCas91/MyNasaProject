@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.gb.mynasaproject.databinding.FragmentMainBinding
 import com.gb.mynasaproject.databinding.FragmentReplacementThemesBinding
 import com.gb.mynasaproject.view.GreenTheme
 import com.gb.mynasaproject.view.MainActivity
 import com.gb.mynasaproject.view.NeonTheme
 
-class ReplacementThemesOnMy : Fragment() {
+class ReplacementThemesOnMyFragment : Fragment() {
 
     private var _binding: FragmentReplacementThemesBinding? = null
     val binding: FragmentReplacementThemesBinding
@@ -55,8 +54,13 @@ class ReplacementThemesOnMy : Fragment() {
     }
 
     companion object {
-        fun newInstance(): ReplacementThemesOnMy {
-            return ReplacementThemesOnMy()
+        fun newInstance(): ReplacementThemesOnMyFragment {
+            return ReplacementThemesOnMyFragment()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

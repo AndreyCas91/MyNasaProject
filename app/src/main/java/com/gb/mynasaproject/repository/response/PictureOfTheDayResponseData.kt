@@ -1,4 +1,4 @@
-package com.gb.mynasaproject.repository
+package com.gb.mynasaproject.repository.response
 
 import com.google.gson.annotations.SerializedName
 
