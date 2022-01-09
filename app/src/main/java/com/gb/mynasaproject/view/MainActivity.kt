@@ -1,9 +1,8 @@
 package com.gb.mynasaproject.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.gb.mynasaproject.R
-import com.gb.mynasaproject.view.picture.PictureOfTheDayFragment
 
 const val GreenTheme = 1
 const val NeonTheme = 2
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if(savedInstanceState==null){
             supportFragmentManager.beginTransaction().replace(R.id.container,
-                PictureOfTheDayFragment.newInstance()).commit()
+                MainFragment.newInstance()).commit()
         }
     }
 

@@ -3,20 +3,51 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable-anydpi/bg_earth.xml" value="0.2703125" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable-anydpi/bg_mars.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable-anydpi/bg_system.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable-anydpi/ic_calendar.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable-anydpi/ic_system.xml" value="0.14635416666666667" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/default_dot.xml" value="0.2703125" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_archive.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_back_fab.xml" value="0.2703125" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_favourite_menu.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_hamburger_menu_bottom_bar.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_load_error_vector.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_no_photo_vector.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_plus_fab.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_search.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_send.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_settings_menu.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/ic_wikipedia.xml" value="0.14635416666666667" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/drawable/selected_dot.xml" value="0.2703125" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/font/akronim.xml" value="0.16041666666666668" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/font/alex_brush.xml" value="0.16041666666666668" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/font/amarante.xml" value="0.264" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/font/architects_daughter.xml" value="0.16041666666666668" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/font/boogaloo.xml" value="0.176" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/bottom_navigation_layout.xml" value="0.13020833333333334" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.13020833333333334" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/earth_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_chips.xml" value="0.15670289855072464" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_earth.xml" value="0.25416666666666665" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_main.xml" value="0.176" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_main_foto_on_day.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_mars.xml" value="0.136" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_picture_of_the_day.xml" value="0.10869565217391304" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_replacement_themes.xml" value="0.4" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_system.xml" value="0.13020833333333334" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/fragment_venus.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/mars_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/layout/system_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/menu/menu_bottom_bar.xml" value="0.25416666666666665" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/menu/menu_bottom_bar_other_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/menu/menu_bottom_navigation_view.xml" value="0.25416666666666665" />
         <entry key="..\:/Project/MyProject/NasaProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14635416666666667" />
       </map>
     </option>

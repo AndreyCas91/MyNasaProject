@@ -2,4 +2,5 @@
 <resources>
     <dimen name="height_button">200dp</dimen>
     <dimen name="width_button">200dp</dimen>
+    <dimen name="photo_text_view_height">70dp</dimen>
 </resources>

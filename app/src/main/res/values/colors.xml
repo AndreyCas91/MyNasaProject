@@ -31,4 +31,7 @@
     <color name="neon_text_color_secondary">#263238</color>
     <color name="neon_background">#5C5C5C</color>
 
+
+    <color name="colorAccent">#F4A836</color>
+
 </resources>
