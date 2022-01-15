@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetStart="@layout/fragment_picture_of_the_day_start"
+        app:constraintSetEnd="@layout/fragment_picture_of_the_day_end"
+        app:duration="1000">
+        <OnClick app:targetId="@+id/materialButton"/>
+    </Transition>
+
+
+
+
+</MotionScene>

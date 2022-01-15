@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="height_button">200dp</dimen>
-    <dimen name="width_button">200dp</dimen>
+    <dimen name="height_button">150dp</dimen>
+    <dimen name="width_button">300dp</dimen>
     <dimen name="photo_text_view_height">70dp</dimen>
+    <dimen name="materialButton_width">0.1dp</dimen>
 </resources>

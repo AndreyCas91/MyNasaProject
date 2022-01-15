@@ -4,23 +4,31 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.*
 import coil.load
 import com.gb.mynasaproject.R
-import com.gb.mynasaproject.databinding.FragmentPictureOfTheDayBinding
+import com.gb.mynasaproject.databinding.FragmentPictureOfTheDayStartBinding
 import com.gb.mynasaproject.viewmodel.AppState
 import com.gb.mynasaproject.viewmodel.PictureOfTheDayViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class PictureOfTHeDayFragment : Fragment() {
 
-    private var _binding: FragmentPictureOfTheDayBinding? = null
-    val binding: FragmentPictureOfTheDayBinding
+    private var isExpand = false
+
+    private var _binding: FragmentPictureOfTheDayStartBinding? = null
+    val binding: FragmentPictureOfTheDayStartBinding
         get() {
             return _binding!!
         }
@@ -39,7 +47,6 @@ class PictureOfTHeDayFragment : Fragment() {
         viewModel.getData().observe(viewLifecycleOwner, Observer {
             renderData(it)
         })
-//        viewModel.sendServerRequest()
         viewModel.sendServerRequest(takeDate(0))
 
         binding.inputLayout.setEndIconOnClickListener {
@@ -49,39 +56,65 @@ class PictureOfTHeDayFragment : Fragment() {
             })
         }
 
+        initButton()
 
-         binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
-             when(checkedId){
-                 R.id.chipToday -> {
-                     viewModel.sendServerRequest(takeDate(0))
-                 }
+        animationImageView()
+    }
 
-                 R.id.chipYesterday -> {
-                     viewModel.sendServerRequest(takeDate(-1))
-                 }
+    private fun animationImageView() {
+        binding.imageView.setOnClickListener {
+            isExpand = !isExpand
 
-                 R.id.chipBeforeYesterday -> {
-                     viewModel.sendServerRequest(takeDate(-2))
-                 }
-             }
-         }
+            val params = binding.imageView.layoutParams as ConstraintLayout.LayoutParams
 
-//        val behavior = BottomSheetBehavior.from(binding.includeBottomSheet.bottomSheetContainer)
+            val transitionSet = TransitionSet()
+            val transitionCB = ChangeBounds()
+            val transitionImage = ChangeImageTransform()
+            transitionCB.duration = 2000
+            transitionImage.duration = 2000
+            transitionSet.addTransition(transitionCB)
+            transitionSet.addTransition(transitionImage)
+            TransitionManager.beginDelayedTransition(binding.container, transitionSet)
 
-//        behavior.addBottomSheetCallback(object :
-//            BottomSheetBehavior.BottomSheetCallback() {
-//            override fun onStateChanged(bottomSheet: View, newState: Int) {
-//                when (newState) {
-//                }
-//            }
+            if (isExpand) {
+                binding.imageView.scaleType = ImageView.ScaleType.CENTER_CROP
+                params.height = ConstraintLayout.LayoutParams.MATCH_PARENT
+            } else {
+                binding.imageView.scaleType = ImageView.ScaleType.CENTER
+                params.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
+            }
 
-//            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-//                Log.d("mylogs", "$slideOffset slideOffset")
-//            }
-//        })
+            binding.imageView.layoutParams = params
+        }
+    }
 
-//        setBottomAppBar()
+    private fun initButton() {
+        binding.btnDay.setOnClickListener {
+            viewModel.sendServerRequest(takeDate(0))
+        }
 
+        binding.btnYesterday.setOnClickListener {
+            viewModel.sendServerRequest(takeDate(-1))
+        }
+
+        binding.btnBeforeYesterday.setOnClickListener {
+            viewModel.sendServerRequest(takeDate(-2))
+        }
+
+        binding.btnTextVisibility.setOnClickListener {
+
+            val transition = TransitionSet()
+
+            transition.addTransition(Fade())
+            transition.addTransition(AutoTransition())
+            transition.duration = 1000
+
+            TransitionManager.beginDelayedTransition(binding.container, transition)
+
+            binding.textView.visibility = View.VISIBLE
+            binding.btnTextVisibility.visibility = View.GONE
+
+        }
     }
 
     private fun renderData(state: AppState) {
@@ -105,7 +138,6 @@ class PictureOfTHeDayFragment : Fragment() {
 
                 val explanation = pictureOfTheDayResponseData.explanation
                 binding.textView.text = explanation
-
             }
         }
     }
@@ -115,7 +147,7 @@ class PictureOfTHeDayFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
+        _binding = FragmentPictureOfTheDayStartBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -132,64 +164,5 @@ class PictureOfTHeDayFragment : Fragment() {
         format1.timeZone = TimeZone.getTimeZone("EST")
         return format1.format(currentDate.time)
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        super.onCreateOptionsMenu(menu, inflater)
-//        inflater.inflate(R.menu.menu_bottom_bar, menu)
-//    }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
-//            R.id.app_bar_settings -> requireActivity().supportFragmentManager.beginTransaction()
-//                .replace(
-//                    R.id.container,
-//                    ChipsFragment.newInstance()
-//                )
-//                .addToBackStack(null)
-//                .commit()
-//            android.R.id.home -> BottomNavigationDrawerFragment().show(
-//                requireActivity().supportFragmentManager,
-//                ""
-//            )
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
-
-//    private var isMain = true
-
-//    private fun setBottomAppBar() {
-//        val context = activity as MainActivity
-//        context.setSupportActionBar(binding.bottomAppBar)
-//        setHasOptionsMenu(true)
-//
-//        binding.fab.setOnClickListener {
-//            if (isMain) {
-//                isMain = false
-//                binding.bottomAppBar.navigationIcon = null
-//                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-//                binding.fab.setImageDrawable(
-//                    ContextCompat.getDrawable(
-//                        context,
-//                        R.drawable.ic_back_fab
-//                    )
-//                )
-//                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
-//            } else {
-//                isMain = true
-//                binding.bottomAppBar.navigationIcon =
-//                    ContextCompat.getDrawable(context, R.drawable.ic_hamburger_menu_bottom_bar)
-//                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-//                binding.fab.setImageDrawable(
-//                    ContextCompat.getDrawable(
-//                        context,
-//                        R.drawable.ic_plus_fab
-//                    )
-//                )
-//                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
-//            }
-//        }
-
-//    }
 
 }

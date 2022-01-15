@@ -19,5 +19,10 @@
     <string name="weather">Weather</string>
     <string name="photo_of_mars">Photo of Mars</string>
     <string name="photo_of_earth">Photo of Earth</string>
+    <string name="button_day">Today</string>
+    <string name="button_yesterday">Yester</string>
+    <string name="button_before_yesterday">Befor</string>
+    <string name="selection_of_the_day">Selection of the day</string>
+    <string name="text_btnTextVisibility">Visibility</string>
 
 </resources>

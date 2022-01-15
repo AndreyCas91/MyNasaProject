@@ -10,6 +10,7 @@ import com.gb.mynasaproject.databinding.FragmentReplacementThemesBinding
 import com.gb.mynasaproject.view.GreenTheme
 import com.gb.mynasaproject.view.MainActivity
 import com.gb.mynasaproject.view.NeonTheme
+import com.gb.mynasaproject.view.ProjectTheme
 
 class ReplacementThemesOnMyFragment : Fragment() {
 
@@ -49,6 +50,11 @@ class ReplacementThemesOnMyFragment : Fragment() {
 
         binding.neonTheme.setOnClickListener {
             parentActivity.setCurrentTheme(NeonTheme)
+            parentActivity.recreate()
+        }
+
+        binding.projectTheme.setOnClickListener {
+            parentActivity.setCurrentTheme(ProjectTheme)
             parentActivity.recreate()
         }
     }
