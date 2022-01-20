@@ -53,6 +53,7 @@ class MainFragment : Fragment() {
                 }
 
                 R.id.navigation_system -> {
+
                     requireActivity().supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.container_fragment, SystemFragment.newInstance())

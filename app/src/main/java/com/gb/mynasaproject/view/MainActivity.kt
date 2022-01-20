@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.gb.mynasaproject.R
 
+const val ProjectTheme = 0
 const val GreenTheme = 1
 const val NeonTheme = 2
 
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getRealStyle(currentTheme: Int): Int {
         return when (currentTheme) {
+            ProjectTheme -> R.style.Theme_MyNasaProject
             GreenTheme -> R.style.GreenTheme
             NeonTheme -> R.style.NeonTheme
             else -> R.style.Theme_MyNasaProject

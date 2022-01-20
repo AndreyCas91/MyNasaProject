@@ -31,11 +31,14 @@ class SystemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewPager.adapter = ViewPagerAdapter(requireActivity())
-        TabLayoutMediator(binding.tabLayout,binding.viewPager, object : TabLayoutMediator.TabConfigurationStrategy{
-            override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
-            }
+        TabLayoutMediator(
+            binding.tabLayout,
+            binding.viewPager,
+            object : TabLayoutMediator.TabConfigurationStrategy {
+                override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
+                }
 
-        }).attach()
+            }).attach()
 
 //        setCustomTabs()
 

@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.gb.mynasaproject.R
-import com.gb.mynasaproject.databinding.FragmentPictureOfTheDayBinding
+import com.gb.mynasaproject.databinding.FragmentVenusBinding
 import com.gb.mynasaproject.viewmodel.PictureOfTheDayViewModel
 
 class VenusFragment:Fragment() {
 
-    private var _binding: FragmentPictureOfTheDayBinding? = null
-    val binding: FragmentPictureOfTheDayBinding
+    private var _binding: FragmentVenusBinding? = null
+    val binding: FragmentVenusBinding
         get() {
             return _binding!!
         }
@@ -27,6 +26,7 @@ class VenusFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_system,container,false)
+        _binding = FragmentVenusBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }

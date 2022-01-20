@@ -17,6 +17,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/TabLayoutTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:tabGravity="center"
         app:tabIndicatorHeight="0dp" />

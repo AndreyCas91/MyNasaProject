@@ -5,10 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.ChangeBounds
+import androidx.transition.ChangeImageTransform
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import coil.load
 import com.gb.mynasaproject.BuildConfig
 import com.gb.mynasaproject.R
@@ -17,6 +23,8 @@ import com.gb.mynasaproject.viewmodel.AppState
 import com.gb.mynasaproject.viewmodel.PictureOfTheDayViewModel
 
 class EarthFragment:Fragment() {
+
+    private var isExpand = false
 
     private var _binding: FragmentEarthBinding? = null
     val binding: FragmentEarthBinding
@@ -45,6 +53,33 @@ class EarthFragment:Fragment() {
         viewModel.getData().observe(viewLifecycleOwner, Observer {
             rander(it)
         })
+
+        imageViewScale()
+    }
+
+    private fun imageViewScale() {
+        binding.imageViewEarth.setOnClickListener {
+            isExpand = !isExpand
+
+            val params = binding.imageViewEarth.layoutParams as LinearLayout.LayoutParams
+
+            val transitionSet = TransitionSet()
+            val transitionCB = ChangeBounds()
+            val transitionImage = ChangeImageTransform()
+            transitionCB.duration = 2000
+            transitionImage.duration = 2000
+            transitionSet.addTransition(transitionCB)
+            transitionSet.addTransition(transitionImage)
+            TransitionManager.beginDelayedTransition(binding.container, transitionSet)
+
+            if (isExpand) {
+                binding.imageViewEarth.scaleType = ImageView.ScaleType.CENTER_CROP
+            } else {
+                binding.imageViewEarth.scaleType = ImageView.ScaleType.CENTER
+            }
+
+            binding.imageViewEarth.layoutParams = params
+        }
     }
 
     private fun rander(state: AppState){

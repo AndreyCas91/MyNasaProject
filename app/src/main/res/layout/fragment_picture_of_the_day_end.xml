@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/search_wiki"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconCheckable="true"
+                app:endIconDrawable="@drawable/ic_wikipedia"
+                app:endIconMode="custom"
+                app:helperText="@string/wiki_helper_text"
+                app:layout_constraintBottom_toTopOf="@+id/motionLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/motionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutDescription="@xml/motion_scene"
+            app:layout_constraintBottom_toTopOf="@id/imageView"
+            app:layout_constraintTop_toBottomOf="@id/inputLayout">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButton"
+                style="@style/MyButtonOfDayStart"
+                android:layout_width="@dimen/materialButton_width"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@id/imageView"
+                tools:ignore="MissingConstraints" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDay"
+                style="@style/MyButtonOfDayEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_day"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@id/imageView"
+                app:layout_constraintEnd_toStartOf="@id/btnYesterday"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inputLayout"
+                tools:ignore="MissingConstraints"
+                tools:text="Day" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnYesterday"
+                style="@style/MyButtonOfDayEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_yesterday"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@id/imageView"
+                app:layout_constraintEnd_toStartOf="@id/btnBeforeYesterday"
+                app:layout_constraintStart_toEndOf="@id/btnDay"
+                app:layout_constraintTop_toBottomOf="@id/inputLayout"
+                tools:ignore="MissingConstraints"
+                tools:text="Yesterday" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBeforeYesterday"
+                style="@style/MyButtonOfDayEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_before_yesterday"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnYesterday"
+                app:layout_constraintTop_toBottomOf="@id/inputLayout"
+                tools:ignore="MissingConstraints"
+                tools:text="Befor" />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
+            <com.gb.mynasaproject.utils.CustomImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/photo_of_the_day_stub"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/motionLayout"
+                app:layout_constraintBottom_toTopOf="@+id/btnTextVisibility"
+                app:srcCompat="@drawable/ic_no_photo_vector" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTextVisibility"
+                style="@style/MyButtonTextVisibility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_btnTextVisibility"
+                app:layout_constraintBottom_toTopOf="@id/textView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnTextVisibility"
+                tools:text="Test" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
